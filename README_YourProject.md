@@ -91,8 +91,10 @@ Aşağıdaki görselde, veri setinde yer alan her özniteliğe ait temel istatis
 ![Alkol ve Kalite Scatter Plot](img/visualization2.png)
 > Bu scatter plot, şaraplardaki alkol miktarı ile kalite puanı arasındaki ilişkiyi göstermektedir. Alkol miktarının artmasıyla birlikte kalite skorlarının da artma eğiliminde olduğu gözlemlenmiştir. Bu durum, alkol seviyesinin kaliteyi etkileyen önemli bir faktör olabileceğini düşündürmektedir. Renkler ile gösterilen pH seviyeleri ise tüm kalite gruplarında benzer bir dağılım göstermektedir.
 
+
 ### Öznitelik İlişkileri
-> *Öznitelikler arasındaki ilişkileri analiz ediniz. Korelasyon matrisi, scatter plot matrisi gibi görsellerle destekleyiniz.*
+![Korelasyon Heat Map](img/heatmap.png)
+> Bu görselleştirmede, Wine Quality veri setindeki özniteliklerin değer yoğunlukları incelenmiştir. Grafikteki her bir renk tonu, ilgili özniteliğin veri içindeki sıklığını temsil etmektedir. Koyu renklere sahip alanlar, daha sık gözlemlenen değerleri göstermektedir.
 
 ## Makine Öğrenmesi Uygulaması
 ### Kullanılan Yöntem
