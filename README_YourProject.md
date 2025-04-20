@@ -1,33 +1,64 @@
 # YMT5270 Ara Sınav Projesi: Orange ile Veri Analizi ve Makine Öğrenmesi
 
 ## Öğrenci Bilgileri
-- **Ad Soyad**: 
-- **Öğrenci Numarası**: 
-- **E-posta**: 
+- **Ad Soyad**: Nebahat Beyza Akkılıç
+- **Öğrenci Numarası**: 241137102
+- **E-posta**: 241137102@firat.edu.tr
 
 ## Proje Özeti
 > *Bu bölümde projenizin genel bir özetini yazınız. Hangi veri setini neden seçtiğinizi, hangi analiz yöntemlerini uyguladığınızı ve genel sonuçlarınızı kısaca açıklayınız (150-250 kelime).*
 
 ## Veri Seti
 ### Veri Seti Bilgileri
-- **Veri Seti Adı**: 
-- **Kaynak**: *(URL veya referans)*
-- **Lisans**: *(Eğer belirtilmişse)*
-- **Veri Seti Boyutu**: *(örn. 500 satır, 10 sütun)*
+- **Veri Seti Adı**: Wine Quality Data Set
+- **Kaynak**: [*Wine Quality Data Set*](https://archive.ics.uci.edu/dataset/186/wine+quality)
+- **Lisans**: P. Cortez, A. Cerdeira, F. Almeida, T. Matos, and J. Reis. "Wine Quality," UCI Machine Learning Repository, 2009. [Online]. Available: https://doi.org/10.24432/C56S3T.
+- **Veri Seti Boyutu**: 1599 satır, 12 sütun
 
 ### Veri Seti Tanımı
-> *Veri setinin içeriğini detaylı olarak açıklayınız. Hangi öznitelikleri içerdiği, verilerin nasıl toplandığı, olası sınırlılıkları gibi bilgileri buraya yazınız.*
+> *Veri, Portekiz'in Vinho Verde bölgesindeki şarap üreticilerinden elde edilmiştir. Kimyasal analizler laboratuvar ortamında gerçekleştirilmiştir. Kalite puanları, uzman tadımcıların subjektif değerlendirmeleri ile belirlenmiştir.*
+> # ⚠️ Olası Sınırlılıklar
+>- **Öznel Kalite Puanı:** `quality` değişkeni kişisel değerlendirmeye dayalıdır.
+>- **Sınıf Dengesizliği:** Bazı kalite puanlarının örnek sayısı düşüktür (örneğin kalite=3, kalite=9).
+>- **Tüm Öznitelikler Sayısal:** Kategorik değişken bulunmamaktadır.
+>- **Tek Tür Veri:** Sadece kırmızı şarap verilerini içermektedir.
 
 ### Öznitelik Açıklamaları
-| Öznitelik Adı | Veri Tipi | Açıklama | Örnek Değer |
-|---------------|-----------|----------|-------------|
-| Örnek Öznitelik 1 | Sayısal | İlgili açıklama | 42.5 |
-| Örnek Öznitelik 2 | Kategorik | İlgili açıklama | "Evet" |
+| Öznitelik Adı            | Veri Tipi | Açıklama                                                                 | Örnek Değer |
+|--------------------------|-----------|--------------------------------------------------------------------------|-------------|
+| `fixed acidity`          | Sayısal   | Sabit asitlik; şarapta çözünmüş temel asit miktarı (tartaric acid vb.)  | 7.4         |
+| `volatile acidity`       | Sayısal   | Uçucu asitlik; yüksek değerler kötü tat ile ilişkilidir (asetik asit)   | 0.70        |
+| `citric acid`            | Sayısal   | Sitrik asit oranı; şaraba tazelik ve asitlik dengesi katar               | 0.00        |
+| `residual sugar`         | Sayısal   | Şeker oranı (g/lt); fermantasyon sonrası kalan şeker miktarı            | 1.9         |
+| `chlorides`              | Sayısal   | Tuzluluk oranı (NaCl vs.); yüksek değerler kaliteyi düşürebilir         | 0.076       |
+| `free sulfur dioxide`    | Sayısal   | Şarapta mikrobiyal büyümeyi engelleyen SO₂ miktarı                       | 11.0        |
+| `total sulfur dioxide`   | Sayısal   | Serbest + bağlı sülfür dioksit toplamı                                   | 34.0        |
+| `density`                | Sayısal   | Şarabın yoğunluğu (g/cm³)                                                | 0.9978      |
+| `pH`                     | Sayısal   | Asitlik derecesi (0–14 arası)                                            | 3.51        |
+| `sulphates`              | Sayısal   | Sülfat oranı; antiseptik özellik taşır, kalite ile pozitif ilişkili     | 0.56        |
+| `alcohol`                | Sayısal   | Alkol oranı (% hacimsel)                                                 | 9.4         |
+| `quality`                | Sayısal   | Tadım uzmanlarınca verilen kalite puanı (hedef değişken, 0–10 arası)     | 5           |
 | ... | ... | ... | ... |
 
 ## Keşifsel Veri Analizi (Explanatory Data Analysis - EDA)
 ### Temel İstatistikler
-> *Veri setine ait temel istatistikleri (ortalama, medyan, standart sapma, vb.) buraya ekleyiniz. Orange'dan alınan ekran görüntüleri ile destekleyebilirsiniz.*
+
+Aşağıdaki görselde, veri setinde yer alan her özniteliğe ait temel istatistiksel bilgiler yer almaktadır:
+
+![Temel İstatistikler](img/featurestatics.png)
+
+> Bu tablo, her bir öznitelik için minimum, maksimum, ortalama (mean), medyan, mod, dağılım (dispersion) gibi istatistiksel değerleri göstermektedir. Ayrıca eksik veri oranları da görüntülenmektedir.
+
+#### 📌 Öne Çıkan Gözlemler:
+
+- **Eksik veri yoktur.** Tüm özniteliklerin eksik veri oranı %0’dır.
+- **Alcohol** ortalaması 10.42, maksimum değeri ise 14.9’dur. Kaliteyle pozitif bir ilişki olabileceği düşünülmektedir.
+- **Volatile acidity**, **citric acid** ve **sulphates** gibi bazı özniteliklerin dağılımı çarpıktır; bu, aykırı değer analizi yapmayı gerekli kılar.
+- **Density**, çok küçük bir dağılıma sahip olup, oldukça homojen bir değişkendir.
+- **Free sulfur dioxide** ve **total sulfur dioxide** değerleri oldukça değişken; maksimum değerleri sırasıyla 72 ve 289’dur. Bu değerler potansiyel aykırı değerleri işaret ediyor olabilir.
+- **Quality** hedef değişkenimiz olup 3 ile 8 arasında değişmektedir. Ortalama kalite 5.64’tür. Bu, sınıflandırma için uygun bir yapı sunar.
+
+
 
 ### Veri Ön İşleme
 > *Veri setinize uyguladığınız ön işleme adımlarını detaylandırınız:*
