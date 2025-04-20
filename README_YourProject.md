@@ -82,15 +82,14 @@ Aşağıdaki görselde, veri setinde yer alan her özniteliğe ait temel istatis
 
 
 ### Görselleştirmeler
-> *Orange ile yaptığınız veri görselleştirmelerini buraya ekleyiniz. Her görselleştirme için kısa bir açıklama yazınız. Görselleri bu repoya yükleyip, markdown içinde referans verebilirsiniz.*
 
-#### Görselleştirme 1: [Görselleştirme Adı]
-![Görselleştirme 1 Açıklaması](goruntuler/gorselleştirme1.png)
-> *Bu görselleştirme ile ilgili yorumunuz ve çıkarımlarınız.*
+#### Görselleştirme 1: Alkol Dağılımı (Histogram)
+![Alkol Dağılımı Histogramı](img/visualizationalcohol.png)
+> Bu görselleştirme, veri setinde bulunan şarapların alkol düzeylerinin dağılımını göstermektedir. Yüksek alkol seviyesine sahip örneklerin sayıca daha fazla olduğu gözlemlenmiştir. Bu durum, alkol düzeyinin şarap kalitesi üzerinde etkili bir faktör olabileceğini düşündürmektedir.
 
-#### Görselleştirme 2: [Görselleştirme Adı]
-![Görselleştirme 2 Açıklaması](goruntuler/gorselleştirme2.png)
-> *Bu görselleştirme ile ilgili yorumunuz ve çıkarımlarınız.*
+#### Görselleştirme 2: Alkol ve Kalite İlişkisi (Scatter Plot)
+![Alkol ve Kalite Scatter Plot](img/visualization2.png)
+> Bu scatter plot, şaraplardaki alkol miktarı ile kalite puanı arasındaki ilişkiyi göstermektedir. Alkol miktarının artmasıyla birlikte kalite skorlarının da artma eğiliminde olduğu gözlemlenmiştir. Bu durum, alkol seviyesinin kaliteyi etkileyen önemli bir faktör olabileceğini düşündürmektedir. Renkler ile gösterilen pH seviyeleri ise tüm kalite gruplarında benzer bir dağılım göstermektedir.
 
 ### Öznitelik İlişkileri
 > *Öznitelikler arasındaki ilişkileri analiz ediniz. Korelasyon matrisi, scatter plot matrisi gibi görsellerle destekleyiniz.*
