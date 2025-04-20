@@ -16,12 +16,13 @@
 - **Veri Seti Boyutu**: 1599 satır, 12 sütun
 
 ### Veri Seti Tanımı
-> *Veri, Portekiz'in Vinho Verde bölgesindeki şarap üreticilerinden elde edilmiştir. Kimyasal analizler laboratuvar ortamında gerçekleştirilmiştir. Kalite puanları, uzman tadımcıların subjektif değerlendirmeleri ile belirlenmiştir.*
-> # ⚠️ Olası Sınırlılıklar
->- **Öznel Kalite Puanı:** `quality` değişkeni kişisel değerlendirmeye dayalıdır.
->- **Sınıf Dengesizliği:** Bazı kalite puanlarının örnek sayısı düşüktür (örneğin kalite=3, kalite=9).
->- **Tüm Öznitelikler Sayısal:** Kategorik değişken bulunmamaktadır.
->- **Tek Tür Veri:** Sadece kırmızı şarap verilerini içermektedir.
+*Veri, Portekiz'in Vinho Verde bölgesindeki şarap üreticilerinden elde edilmiştir. Kimyasal analizler laboratuvar ortamında gerçekleştirilmiştir. Kalite puanları, uzman tadımcıların subjektif değerlendirmeleri ile belirlenmiştir.*
+
+⚠️ Olası Sınırlılıklar
+- **Öznel Kalite Puanı:** `quality` değişkeni kişisel değerlendirmeye dayalıdır.
+- **Sınıf Dengesizliği:** Bazı kalite puanlarının örnek sayısı düşüktür (örneğin kalite=3, kalite=9).
+- **Tüm Öznitelikler Sayısal:** Kategorik değişken bulunmamaktadır.
+- **Tek Tür Veri:** Sadece kırmızı şarap verilerini içermektedir.
 
 ### Öznitelik Açıklamaları
 | Öznitelik Adı            | Veri Tipi | Açıklama                                                                 | Örnek Değer |
@@ -61,12 +62,24 @@ Aşağıdaki görselde, veri setinde yer alan her özniteliğe ait temel istatis
 
 
 ### Veri Ön İşleme
-> *Veri setinize uyguladığınız ön işleme adımlarını detaylandırınız:*
-> - *Eksik verilerin nasıl işlendiği*
-> - *Aykırı değerlerin tespiti ve işlenmesi*
-> - *Veri normalizasyonu/standardizasyonu*
-> - *Kategorik verilerin kodlanması*
-> - *Diğer ön işleme adımları*
+- *Eksik verilerin tespiti*
+
+    Veri setinde eksik değer bulunmamaktadır. Aşağıdaki görselde tüm özniteliklerin tam dolu olduğu görülmektedir:
+    ![Eksik Veriler](img/missingdata.png)
+
+- *Aykırı değerlerin tespiti*
+
+    Box Plot kullanılarak yapılan analizde bazı özniteliklerde aykırı değerler gözlemlenmiştir. Özellikle 'residual sugar', 'total sulfur dioxide' ve 'citric acid' değişkenleri dikkat çekmektedir.
+  
+    ![Aykırı Değerler](img/outliner.png)
+
+
+- *Veri normalizasyonu/standardizasyonu*
+
+    Veri seti, farklı ölçeklerdeki özniteliklerin model performansını olumsuz etkilememesi için standart sapmaya göre normalize edilmiştir. Ve kategorik verilerin kodlanması bu veri seti sadece sayısal öznitelikler       içerdiğinden atlanmıştır.
+    ![Veri Normalizasyonu](img/continuize.png)
+    ![Veri Normalizasyonu](img/continuize2.png)
+
 
 ### Görselleştirmeler
 > *Orange ile yaptığınız veri görselleştirmelerini buraya ekleyiniz. Her görselleştirme için kısa bir açıklama yazınız. Görselleri bu repoya yükleyip, markdown içinde referans verebilirsiniz.*
