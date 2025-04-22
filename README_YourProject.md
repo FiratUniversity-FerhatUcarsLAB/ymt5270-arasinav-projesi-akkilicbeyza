@@ -98,46 +98,97 @@ Aşağıdaki görselde, veri setinde yer alan her özniteliğe ait temel istatis
 
 ## Makine Öğrenmesi Uygulaması
 ### Kullanılan Yöntem
-> *Veri setinize uyguladığınız makine öğrenmesi yöntemini (sınıflandırma, regresyon veya kümeleme) belirtiniz ve neden bu yöntemi seçtiğinizi açıklayınız.*
+
+Bu projede, Wine Quality veri seti kullanılmıştır. Veri setindeki hedef değişken olan **quality** sayısal (numeric) bir değişken olduğu için **regresyon yöntemi** tercih edilmiştir. Amaç, şarapların kimyasal özelliklerine dayanarak kalite değerlerini tahmin etmektir. 
+
 
 ### Modeller ve Parametreler
-> *Denediğiniz modelleri ve kullandığınız parametreleri açıklayınız. Orange'da yapılandırdığınız widget ayarlarını ekran görüntüleri ile destekleyebilirsiniz.*
+
+Orange ile iki farklı regresyon modeli uygulanmıştır:
+
+- **Linear Regression**: Parametre gerektirmeyen basit doğrusal model.
+- **Random Forest**: Orange içindeki varsayılan ayarlarla çalıştırılmıştır.
+
+Veri işleme adımlarında:
+- `Select Columns` widget'ı kullanılarak `quality` hedef değişken olarak atanmıştır.
+- Diğer kimyasal nitelikler (ör. alcohol, sulphates, pH vb.) özellik (feature) olarak belirlenmiştir.
+
+  ![Regresyon](img/selectcolumnsregresyon.png)
 
 ### Model Değerlendirmesi
-> *Uyguladığınız modelin performansını değerlendiriniz. Kullandığınız değerlendirme metriklerini açıklayınız.*
+
+Aşağıda, her iki model için 10 katlı çapraz doğrulama ile elde edilen başarı metrikleri verilmiştir:
+
 
 #### Metrikler
-| Metrik | Değer |
-|--------|-------|
-| Örnek Metrik 1 | 0.85 |
-| Örnek Metrik 2 | 0.78 |
-| ... | ... |
+| Metrik | Linear Regression | Random Forest |
+|--------|-------------------|----------------|
+| MSE    | 0.426             | **0.340**      |
+| RMSE   | 0.652             | **0.583**      |
+| MAE    | 0.505             | **0.421**      |
+| MAPE   | 0.093             | **0.078**      |
+| R²     | 0.347             | **0.478**      |
+
+![Regresyon Sonuçları](img/testandscoreregresyon.png)
+
 
 ### Sonuçların Yorumlanması
-> *Elde ettiğiniz sonuçları detaylı bir şekilde yorumlayınız. Modelin güçlü ve zayıf yönleri nelerdir? Başka hangi modeller denenebilirdi?*
+
+Random Forest modeli, tüm performans metriklerinde Linear Regression'a göre daha iyi sonuçlar vermiştir. Özellikle R² skorunun yüksek olması, modelin bağımsız değişkenlerle hedef değişken arasındaki ilişkiyi daha iyi yakaladığını göstermektedir.
+
+**Modelin güçlü yönleri:**
+- Random Forest doğrusal olmayan ilişkileri daha iyi öğrenebilir.
+- Aşırı öğrenmeye (overfitting) karşı dirençlidir.
+
+**Modelin zayıf yönleri:**
+- Açıklanabilirlik düşüktür.
+- Hesaplama maliyeti yüksektir.
+
+**Alternatif modeller:**
+- **XGBoost** veya **Gradient Boosting** gibi diğer ensemble yöntemleri denenebilir.
+- Hiperparametre optimizasyonu yapılabilir.
+
+
 
 ## Orange İş Akışı
-> *Orange ile oluşturduğunuz iş akışı görselini buraya ekleyiniz. İş akışınızın adımlarını kısaca açıklayınız.*
 
-![Orange İş Akışı](goruntuler/is_akisi.png)
+Aşağıda Orange'da oluşturulan iş akışının görseli yer almaktadır:
+
+![Orange İş Akışı](img/orangeisakisi.png)
+
+**İş akışı adımları:**
+1. `File` widget'ı ile veri seti yüklendi.
+2. `Select Columns` ile hedef ve özellik değişkenleri belirlendi.
+3. `Linear Regression` ve `Random Forest` modelleri eklendi.
+4. `Test and Score` ile modeller 10 katlı çapraz doğrulama ile değerlendirildi.
+
 
 ## Sonuç ve Öneriler
-> *Projenizin genel bir değerlendirmesini yapınız. Elde ettiğiniz sonuçlar hakkında çıkarımlarınızı ve gelecek çalışmalar için önerilerinizi yazınız.*
+
+Bu çalışmada, Wine Quality veri seti üzerinde regresyon modelleri uygulanmıştır. Random Forest modeli, hata oranlarını düşürüp kaliteyi daha doğru tahmin ederek Linear Regression modeline göre üstün performans göstermiştir.
+
+### Öneriler:
+- Model performansı arttırmak için hiperparametre optimizasyonu yapılabilir.
+- Diğer regresyon modelleri ile (SVR, Ridge, Lasso) karşılaştırmalar yapılabilir.
+- Özellik mühendisliği ile modele yeni anlamlı değişkenler eklenebilir.
+
 
 ## Kaynaklar
-> *Proje boyunca yararlandığınız kaynakları (makaleler, web siteleri, videolar, vb.) buraya ekleyiniz.*
 
-1. Kaynak 1
-2. Kaynak 2
-3. ...
+1. ChatGPT
+2. DeepSeek
+3. https://archive.ics.uci.edu/ml/datasets/Wine+Quality
+4. Orange Data Mining Documentation – https://orangedatamining.com
+5. https://scikit-learn.org/stable/modules/ensemble.html#random-forests
+6. Ufuk Çelik Adım Adım "Veri Madenciliği" 11 Orange 01 - https://youtu.be/6HSZ0qppFWw?si=8TJPNjJ01G10fxfc
+7. Orange Data Mining Video Tutorials - https://www.youtube.com/c/OrangeDataMining
+
 
 ## Ekler
 ### Orange Proje Dosyası
-> *Orange proje dosyanızı (.ows) bu repoya yükleyiniz ve buradan referans veriniz.*
 > 
-> [Proje_Dosyasi.ows](proje_dosyasi.ows)
+> [Proje_Dosyasi.ows](project/winequality.ows)
 
 ### Veri Seti Dosyası veya Bağlantısı
-> *Kullandığınız veri setini bu repoya yükleyebilir veya bağlantısını burada paylaşabilirsiniz.*
 >
-> [Veri_Seti.csv](veri_seti.csv) veya [Veri Seti Bağlantısı](https://ornek-veri-seti-baglantisi.com)
+> [Wine Quality Veri Seti Bağlantısı](https://archive.ics.uci.edu/dataset/186/wine+quality)
