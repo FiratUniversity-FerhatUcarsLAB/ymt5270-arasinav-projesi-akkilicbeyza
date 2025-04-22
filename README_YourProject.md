@@ -6,7 +6,9 @@
 - **E-posta**: 241137102@firat.edu.tr
 
 ## Proje Özeti
-> *Bu bölümde projenizin genel bir özetini yazınız. Hangi veri setini neden seçtiğinizi, hangi analiz yöntemlerini uyguladığınızı ve genel sonuçlarınızı kısaca açıklayınız (150-250 kelime).*
+> Bu projede, şarap kalitesini tahmin etmeye yönelik bir makine öğrenmesi uygulaması gerçekleştirilmiştir. Kullanılan veri seti, UCI Machine Learning Repository'den alınan ve kırmızı şarapların kimyasal özelliklerini içeren **Wine Quality** veri setidir. Bu veri seti, 11 adet bağımsız değişken (örneğin: pH, alkol, sitrik asit, sülfür dioksit miktarı vb.) ve 0 ile 10 arasında değişen `quality` adında sayısal bir hedef değişkenden oluşmaktadır. Veri setinin yapısı nedeniyle analiz yöntemi olarak **regresyon** tercih edilmiştir. Bu çalışmada, **Linear Regression** ve **Random Forest** modelleri uygulanmış ve Orange Data Mining aracı kullanılarak modelleme süreci gerçekleştirilmiştir. Her iki model, 10 katlı çapraz doğrulama yöntemi ile test edilmiştir.
+Sonuçlar, Random Forest algoritmasının Linear Regression’a göre daha başarılı olduğunu göstermektedir. Özellikle ortalama kare hata (MSE), ortalama mutlak hata (MAE) ve R-kare (R²) gibi metriklerde Random Forest daha düşük hata oranlarına ve daha yüksek başarı skoruna ulaşmıştır.
+Bu proje, temel düzeyde regresyon problemleri üzerinde çalışmak isteyenler için uygun bir örnek teşkil etmektedir. Sonuçlar, kimyasal bileşenlerin şarap kalitesi üzerinde anlamlı bir etkisi olduğunu ve doğru model seçimi ile bu ilişkinin başarılı bir şekilde tahmin edilebileceğini göstermektedir.
 
 ## Veri Seti
 ### Veri Seti Bilgileri
